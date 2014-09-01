@@ -9,7 +9,7 @@ class unifi {
 
   package { 'unifi':
     ensure  => 'installed',
-    require => Apt::Source['precise_ubiquiti'],
+    require => [ Apt::Source['precise_ubiquiti'], Class['mongodb'] ],
   }
 
   class { 'mongodb::globals':
