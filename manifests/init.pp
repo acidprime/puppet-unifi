@@ -15,8 +15,6 @@ class unifi {
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
+  include mongodb
 
-  class { 'mongodb':
-    enable_10gen => true,
-  }
 }
