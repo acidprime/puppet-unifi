@@ -8,9 +8,14 @@ class unifi {
     include_src       => false,
   }
 
-  package { 'unifi':
+  package { 'unifi-rapid':
     ensure  => 'installed',
     require => [ Apt::Source['precise_ubiquiti'], Class['mongodb'] ],
+  }
+
+
+  service { 'unifi':
+    ensure => 'running'
   }
 
   class { 'mongodb::globals':
