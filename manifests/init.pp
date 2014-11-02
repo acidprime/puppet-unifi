@@ -10,7 +10,7 @@ class unifi {
 
   package { 'unifi-rapid':
     ensure  => 'installed',
-    require => [ Apt::Source['precise_ubiquiti'], Class['mongodb'] ],
+    require => [ Apt::Source['precise_ubiquiti'], Class['mongodb::server'] ],
   }
 
 
