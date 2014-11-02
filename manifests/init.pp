@@ -14,7 +14,7 @@ class unifi {
   }
 
   service { 'unifi':
-    ensure  => 'running'
+    ensure  => 'running',
     pattern => '.* /usr/lib/unifi/lib/ace.jar start$'
   }
 
