@@ -1,4 +1,6 @@
-class unifi {
+class unifi(
+  $version = '3.2.7-2347'
+){
   apt::source { 'precise_ubiquiti':
     comment           => 'This is the ubiquiti precise 12.0.4 source',
     location          => 'http://www.ubnt.com/downloads/unifi/distros/deb/precise/',
@@ -9,7 +11,7 @@ class unifi {
   }
 
   package { 'unifi-rapid':
-    ensure  => 'installed',
+    ensure  => $version,
     require => [ Apt::Source['precise_ubiquiti'], Class['mongodb::server'] ],
   }
 
