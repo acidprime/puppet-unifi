@@ -13,14 +13,16 @@ class unifi {
     require => [ Apt::Source['precise_ubiquiti'], Class['mongodb::server'] ],
   }
 
-
   service { 'unifi':
-    ensure => 'running'
+    ensure  => 'running'
+    pattern => '.* /usr/lib/unifi/lib/ace.jar start$'
   }
 
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
-  include mongodb::server
+  class { 'mongodb::server':
+      verbose => true,
+  }
 
 }
