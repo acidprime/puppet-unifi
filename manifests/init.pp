@@ -17,7 +17,8 @@ class unifi(
 
   service { 'unifi':
     ensure  => 'running',
-    pattern => '.* /usr/lib/unifi/lib/ace.jar start$'
+    pattern => '.*/usr/lib/unifi/lib/ace.jar.*$',
+    require => Package['unifi-rapid'],
   }
 
   class { 'mongodb::globals':
