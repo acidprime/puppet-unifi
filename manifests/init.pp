@@ -28,7 +28,7 @@ class unifi(
       ensure   => 'installed',
       source   => '/opt/staging/unifi/unifi_sysvinit_all.deb',
       provider => 'dpkg',
-      require  => [ Staging::File['unifi_sysvinit_all'],Class['mongodb::server'] ],
+      require  => [ Staging::File['unifi_sysvinit_all.deb'],Class['mongodb::server'] ],
     }
   }
 
