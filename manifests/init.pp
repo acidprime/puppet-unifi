@@ -39,6 +39,8 @@ class unifi(
     require => Package['unifi'],
   }
 
+  include mongodb::client
+
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
