@@ -48,5 +48,4 @@ class unifi(
       verbose => true,
   }
 
-  include ::mongodb::client
 }
