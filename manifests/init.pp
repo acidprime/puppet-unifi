@@ -20,11 +20,15 @@ class unifi(
     }
   } else {
     # Install from their downloads page
+    staging::file { 'unifi_sysvinit_all.deb':
+      source => "http://www.ubnt.com/downloads/unifi/${version}/unifi_sysvinit_all.deb",
+    }
+
     package { 'unifi':
       ensure   => 'installed',
-      require  => Class['mongodb::server'],
-      source   => "http://www.ubnt.com/downloads/unifi/${version}/unifi_sysvinit_all.deb",
+      source   => '/opt/staging/unifi/unifi_sysvinit_all.deb',
       provider => 'dpkg',
+      require  => [ Staging::File['unifi_sysvinit_all'],Class['mongodb::server'] ],
     }
   }
 
