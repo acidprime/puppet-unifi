@@ -16,7 +16,7 @@ class unifi(
     }
     package { 'unifi':
       ensure  => $version,
-      require => [ Apt::Source['precise_ubiquiti'], Class['mongodb::server'] ],
+      require => [ Apt::Source['precise_ubiquiti'], Class['::mongodb::server'] ],
     }
   } else {
     # Install from their downloads page
@@ -28,7 +28,7 @@ class unifi(
       ensure   => 'installed',
       source   => '/opt/staging/unifi/unifi_sysvinit_all.deb',
       provider => 'dpkg',
-      require  => [ Staging::File['unifi_sysvinit_all.deb'],Class['mongodb::server'] ],
+      require  => [ Staging::File['unifi_sysvinit_all.deb'],Class['::mongodb::server'] ],
     }
   }
 
@@ -39,12 +39,12 @@ class unifi(
     require => Package['unifi'],
   }
 
-  include mongodb::client
+  include ::mongodb::client
 
-  class { 'mongodb::globals':
+  class { '::mongodb::globals':
     manage_package_repo => true,
   }
-  class { 'mongodb::server':
+  class { '::mongodb::server':
       verbose => true,
   }
 
