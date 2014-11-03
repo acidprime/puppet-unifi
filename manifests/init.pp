@@ -42,6 +42,7 @@ class unifi(
 
   class { '::mongodb::globals':
     manage_package_repo => true,
+    version             => '2.4.12',
   }
   class { '::mongodb::server':
       verbose => true,
