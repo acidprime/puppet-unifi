@@ -1,5 +1,5 @@
 class unifi(
-  $version     = '3.2.7-2347',
+  $version     = '5.6.29',
   $manage_repo = true,
 ){
 
@@ -21,7 +21,7 @@ class unifi(
   } else {
     # Install from their downloads page
     staging::file { 'unifi_sysvinit_all.deb':
-      source => "http://www.ubnt.com/downloads/unifi/${version}/unifi_sysvinit_all.deb",
+      source => "https://dl.ubnt.com/unifi/${version}/unifi_sysvinit_all.deb",
     }
 
     package { 'unifi':
