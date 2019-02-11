@@ -45,7 +45,7 @@ class unifi(
   }
 
   package { 'mongodb-10gen':
-    ensure => '2.4.12',
+    ensure => '2.4.14',
   }
 
 
